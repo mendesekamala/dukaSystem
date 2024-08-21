@@ -1,0 +1,85 @@
+.order-form-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+    margin: 5px 50px 50px 50px;
+}
+
+.form-left, .form-right {
+    width: 48%;
+    background-color: #d2e5f0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.tab {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.tablinks {
+    padding: 10px;
+    width: 50%;
+    cursor: pointer;
+    margin-right: 2em;
+}
+
+.tablinks.active {
+    background-color: #90ee90;
+}
+
+.order-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.order-form input, .order-form select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.price-quantity {
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-quantity > div {
+    width: 30%;
+}
+
+button {
+    background-color: #90ee90;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.order-list {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.order-list ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.order-list .total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.payment {
+    margin-top: 20px;
+}
+
+#debt_input {
+    margin-top: 10px;
+}
