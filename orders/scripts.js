@@ -103,24 +103,28 @@ function toggleDebtField() {
 }
 
 function completeOrder() {
-    const customerName = document.getElementById('customer_name').value;
+    const grandTotal = parseFloat(document.getElementById('grandTotal').textContent);
     const paymentMethod = document.getElementById('payment_method').value;
-    const debtAmount = paymentMethod === 'debt' ? document.getElementById('debt_input').value : 'NIL';
+    const customerName = document.getElementById('customer_name').value;
+    let debtAmount = 0;
 
-    if (!customerName || orderItems.length === 0) {
-        alert("Please complete the order form");
-        return;
+    if (paymentMethod === 'debt') {
+        debtAmount = parseFloat(document.getElementById('debt_input').value);
     }
 
+    const orderItems = []; // Assuming you have logic to populate this array with order details
+
+    // AJAX request to complete the order
     const xhr = new XMLHttpRequest();
     xhr.open('POST', 'complete_order.php', true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            alert(`Order completed successfully! Order Number: ${response.order_number}`);
+            alert('Order completed successfully!');
             window.location.reload();
         }
     };
-    xhr.send(JSON.stringify({ customerName, orderItems, paymentMethod, debtAmount }));
+
+    xhr.send(`grandTotal=${grandTotal}&paymentMethod=${paymentMethod}&customerName=${encodeURIComponent(customerName)}&debtAmount=${debtAmount}&orderItems=${encodeURIComponent(JSON.stringify(orderItems))}`);
 }
+

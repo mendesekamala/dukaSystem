@@ -1,0 +1,114 @@
+.prdct-cont {
+    padding: 20px;
+    background-color: #d3d3e1;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin: 50px 0 0 200px;
+}
+
+.prdct-cont input[type="text"],
+.prdct-cont select,
+.prdct-cont input[type="number"],
+.prdct-cont textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.prdct-cont input[type="text"] {
+    font-weight: bold;
+    font-size: 24px;
+    background-color: #fff;
+    color: #333;
+    text-align: center;
+}
+
+.prdct-cont textarea {
+    resize: none;
+}
+
+.prdct-cont h3 {
+    font-style: italic;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #333;
+}
+
+.prdct-cont button {
+    background-color: #c4e0b0;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.prdct-cont button:hover {
+    background-color: #a8d5a3;
+}
+
+.prdct-cont label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+}
+
+
+.container {
+    margin: 100px auto;
+    width: 70%;
+    background-color: #b0c4de;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+}
+.tab.active {
+    background-color: #90ee90;
+}
+.active-tab {
+    background-color: #90ee90;
+}
+.form-container {
+    display: none;
+}
+.active-form {
+    display: block;
+}
+
+
+.table-style{
+    border-collapse: collapse; 
+    margin: 0 auto 0 auto;
+    padding: 10px 20px;
+}
+
+.table-style td, th{
+    padding: 10px 20px;
+}
+
+.table-style th{
+    padding: 10px 20px;
+}
+

@@ -56,5 +56,18 @@ foreach ($order_items as $item) {
     }
 }
 
+// Update cash in the liquidity table
+if ($payment_method === 'cash') {
+    // Calculate the total amount for the order
+    $total_order_amount = array_reduce($order_items, function($carry, $item) {
+        return $carry + $item['total'];
+    }, 0);
+
+    // Update the cash column in the liquidity table
+    $cash_update_query = $conn->prepare("UPDATE liquidity SET cash = cash + ? WHERE id = 1"); // Assuming 'id = 1' for a single entry
+    $cash_update_query->bind_param("d", $total_order_amount);
+    $cash_update_query->execute();
+}
+
 echo json_encode(['message' => 'Order completed successfully', 'order_number' => $order_number]);
 ?>

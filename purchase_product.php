@@ -17,11 +17,18 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $new_quantity = $row['quantity'] + $quantity;
-    $sql = "UPDATE products SET quantity = '$new_quantity' WHERE product_name = '$product_name'";
+    
+    // Update quantity, buying_price, and selling_price in a single query
+    $sql = "UPDATE products 
+            SET quantity = '$new_quantity', 
+                buying_price = '$buying_price', 
+                selling_price = '$selling_price' 
+            WHERE product_name = '$product_name'";
+
     if ($conn->query($sql) === TRUE) {
-        echo "Product quantity updated successfully";
+        echo "Product updated successfully";
     } else {
-        echo "Error updating quantity: " . $conn->error;
+        echo "Error updating product: " . $conn->error;
     }
 } else {
     $sql = "INSERT INTO products (product_name, product_nickname, product_description, buying_price, selling_price, quantity, expiry_date, date_bought, supplier)

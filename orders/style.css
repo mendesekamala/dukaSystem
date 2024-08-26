@@ -10,6 +10,7 @@
     background-color: #d2e5f0;
     padding: 20px;
     border-radius: 5px;
+    border-collapse: none;
 }
 
 .tab {
@@ -26,7 +27,7 @@
 }
 
 .tablinks.active {
-    background-color: #90ee90;
+    background-color: yellow;
 }
 
 .order-form label {

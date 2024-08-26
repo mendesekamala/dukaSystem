@@ -26,6 +26,9 @@
         .suggestion-item:hover {
             background-color: #f0f0f0;
         }
+
+        
+
     </style>
     
 
@@ -34,13 +37,20 @@
     <div>
 
         <div class="sidebar">
-        <h3 style="text-align:center;">Dashboard</h3>
+            <h3 style="text-align:center;">Dashboard</h3>
+            
+            <button class="dropdown-btn" style="font-size: 18px;">stock
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                <a href="#" onclick="showContent('view-stock')">view stock</a>
+                <a href="#" onclick="showContent('add-stock')">add stock</a>
+            </div>
+            <a href="orders.php">Orders</a>
+            <a href="transactions.html">Transactions</a>
+            <a href="debts.html">Debts</a>
+        </div>
         
-        <a href="#" class="active">Stock</a>
-        <a href="orders.php">Orders</a>
-        <a href="transactions.html">Transactions</a>
-        <a href="debts.html">Debts</a>
-      </div>
       
     </div>
 
@@ -109,7 +119,6 @@
                     </div>
                 </div>
             </form>
-    classList
             <div id="create-form" class="form-container">
                 <form method="POST" action="create_product.php">
                     <table>
@@ -267,6 +276,181 @@
 
         // Default to showing the purchase form
         showForm('purchase');
+
+
+        function showContent(action) {
+        const container = document.querySelector('.container');
+
+        if (action === 'add-stock') {
+            // Default to showing the purchase form
+            showForm('purchase');
+            container.innerHTML = `
+            
+                
+                    <div class="tabs">
+                        <div id="purchase-tab" class="tab" onclick="showForm('purchase')">Purchase Product</div>
+                        <div id="create-tab" class="tab" onclick="showForm('create')">Create New Product</div>
+                    </div>
+            
+                    <form method="POST" action="purchase_product.php">
+                        <div id="purchase-form" class="form-container">
+                            <table>
+                                <tr>
+                                    <td colspan="6" class="form-group">
+                                        <label for="search" style="text-align: center;">Search by product name:</label>
+                                        <p style="text-align: center;"> <input type="text" id="search" onkeyup="liveSearch()" style="width: 60%;"> </p>
+                                        <p style="text-align: center;"> <div id="suggestions" class="suggestions"></div> </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="form-group">
+                                        <label for="product_name">Product Name:</label>
+                                        <input type="text" id="product_name" name="product_name">
+                                    </td>
+                                    <td colspan="2" class="form-group">
+                                        <label for="product_nickname">Product Nickname:</label>
+                                        <input type="text" id="product_nickname" name="product_nickname">
+                                    </td>
+                                    <td colspan="2" class="form-group">
+                                        <label for="product_description">Product Description:</label>
+                                        <input type="text" id="product_description" name="product_description">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="form-group">
+                                        <label for="buying_price">Buying Price:</label>
+                                        <input type="text" id="buying_price" name="buying_price">
+                                    </td>
+                                    <td colspan="2" class="form-group">
+                                        <label for="selling_price">Selling Price:</label>
+                                        <input type="text" id="selling_price" name="selling_price">
+                                    </td>
+                                    <td colspan="2" class="form-group">
+                                        <label for="quantity">Quantity:</label>
+                                        <input type="text" id="quantity" name="quantity">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="form-group">
+                                        <label for="expiry_date">Expiry Date:</label>
+                                        <input type="date" id="expiry_date" name="expiry_date">
+                                    </td>
+                                    <td colspan="2" class="form-group">
+                                        <label for="date_bought">Date Bought:</label>
+                                        <input type="date" id="date_bought" name="date_bought">
+                                    </td>
+                                    <td colspan="2" class="form-group">
+                                        <label for="supplier">Supplier:</label>
+                                        <input type="text" id="supplier" name="supplier">
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="form-group">
+                                <button type="button" onclick="purchaseProduct()">Purchase</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="create-form" class="form-container">
+                        <form method="POST" action="create_product.php">
+                            <table>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <tr>
+                                    <td colspan="2" class="form-group">
+                                        <label for="product_name">Product Name:</label>
+                                        <input type="text" id="pname" name="product_name">
+                                    </td>
+                                    <td colspan="2" class="form-group">
+                                        <label for="product_nickname">Product Nickname:</label>
+                                        <input type="text" id="pnickname" name="product_nickname">
+                                    </td>
+                                    <td colspan="2" class="form-group">
+                                        <label for="product_description">Product Description:</label>
+                                        <input type="text" id="pdescription" name="product_description">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="form-group">
+                                        <label for="buying_price">Buying Price:</label>
+                                        <input type="text" id="buyingprice" name="buying_price">
+                                    </td>
+                                    <td colspan="2" class="form-group">
+                                        <label for="selling_price">Selling Price:</label>
+                                        <input type="text" id="sellingprice" name="selling_price">
+                                    </td>
+                                    <td colspan="2" class="form-group">
+                                        <label for="quantity">Quantity:</label>
+                                        <input type="text" id="quantity" name="quantity">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="form-group">
+                                        <label for="expiry_date">Expiry Date:</label>
+                                        <input type="date" id="expirydate" name="expiry_date">
+                                    </td>
+                                    <td colspan="2" class="form-group">
+                                        <label for="date_bought">Date Bought:</label>
+                                        <input type="date" id="datebought" name="date_bought">
+                                    </td>
+                                    <td colspan="2" class="form-group">
+                                        <label for="supplier">Supplier:</label>
+                                        <input type="text" id="supplier" name="supplier">
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="form-group">
+                                <button type="submit">create</button>
+                            </div>
+                        </form>
+                    </div>
+            `;
+        } else if (action === 'view-stock') {
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'fetch_products.php', true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    container.innerHTML = `<table>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Nickname</th>
+                            <th>Description</th>
+                            <th>Buying Price</th>
+                            <th>Selling Price</th>
+                            <th>Quantity</th>
+                            <th>Expiry Date</th>
+                            <th>Date Bought</th>
+                            <th>Supplier</th>
+                        </tr>
+                        ${xhr.responseText}
+                    </table>`;
+                }
+            };
+            xhr.send();
+        }
+    }
+
+
+
+    //* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
+
+
     </script>
 </body>
 </html>

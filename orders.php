@@ -99,6 +99,27 @@
             background-color: #218838;
         }
 
+        .suggestions {
+            position: absolute;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            max-height: 200px;
+            overflow-y: auto;
+            width: 30%;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        .suggestion-item {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .suggestion-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        
+
+
     </style>
 
 </head>
@@ -107,9 +128,9 @@
     <div>
         <div class="sidebar">
             <h3 style="text-align:center;">Dashboard</h3>
-            <a href="stock.html">Stock</a>
+            <a href="stock.php">Stock</a>
             <a href="#" class="active">Orders</a>
-            <a href="transactions.html">Transactions</a>
+            <a href="transactions.php">Transactions</a>
             <a href="debts.html">Debts</a>
         </div>
     </div>

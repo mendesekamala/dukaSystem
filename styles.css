@@ -19,6 +19,7 @@ body {
     padding: 16px;
     text-decoration: none;
     padding-left: 3em;
+    font-size: 18px;
   }
    
   .sidebar a.active {
@@ -59,4 +60,7 @@ body {
     margin: 1px solid green;
     height: 500px;
   }
-  
+
+
+
+
